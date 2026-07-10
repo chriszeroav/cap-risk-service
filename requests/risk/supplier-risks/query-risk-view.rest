@@ -1,0 +1,20 @@
+### Listar vista de riesgos con campos principales
+GET http://localhost:4004/odata/v4/risk/SupplierRisks?$select=supplierName,country,riskLevel,categoryName
+
+### Listar vista de riesgos con nombre y pais
+GET http://localhost:4004/odata/v4/risk/SupplierRisks?$select=name,country
+
+### Buscar riesgos del proveedor Andes Logistics SAC
+GET http://localhost:4004/odata/v4/risk/SupplierRisks?$filter=supplierName eq 'Andes Logistics SAC'
+
+### Filtrar riesgos por categoria Raw Materials
+GET http://localhost:4004/odata/v4/risk/SupplierRisks?$filter=categoryName eq 'Raw Materials'
+
+### Ordenar riesgos por puntaje descendente
+GET http://localhost:4004/odata/v4/risk/SupplierRisks?$orderby=riskScore desc
+
+### Ordenar riesgos por categoria y proveedor
+GET http://localhost:4004/odata/v4/risk/SupplierRisks?$orderby=categoryName asc,supplierName asc
+
+### Expandir categoria en la vista de riesgos
+GET http://localhost:4004/odata/v4/risk/SupplierRisks?$select=supplierName,riskLevel,categoryName&$expand=category($select=name)

@@ -1,0 +1,2 @@
+### Eliminar proveedor por ID
+DELETE http://localhost:4004/odata/v4/admin/Suppliers(6a762722-4b6e-4806-9541-4b21d7a3b870)

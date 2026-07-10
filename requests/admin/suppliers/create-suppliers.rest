@@ -1,0 +1,49 @@
+### Crear proveedor simple desde Admin
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Cordillera Safety Supplies",
+  "country": "Peru",
+  "taxId": "20666777888",
+  "email": "ventas@cordillerasafety.pe",
+  "phone": "+51 988 777 666",
+  "status": "ACTIVE",
+  "riskScore": 30,
+  "riskLevel": "LOW",
+  "category_ID": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
+}
+
+### Crear proveedor con contactos usando deep insert
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Inka Industrial Services",
+  "country": "Peru",
+  "taxId": "20777111222",
+  "email": "contacto@inkaindustrial.pe",
+  "phone": "+51 977 111 222",
+  "status": "ACTIVE",
+  "riskScore": 62,
+  "riskLevel": "MEDIUM",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Lucía",
+      "lastName": "Paredes",
+      "role": "OPERATIONS_MANAGER",
+      "email": "lucia.paredes@inkaindustrial.pe",
+      "phone": "+51 977 111 001",
+      "isPrimary": true
+    },
+    {
+      "firstName": "Mateo",
+      "lastName": "Salazar",
+      "role": "FINANCE_CONTACT",
+      "email": "mateo.salazar@inkaindustrial.pe",
+      "phone": "+51 977 111 002",
+      "isPrimary": false
+    }
+  ]
+}

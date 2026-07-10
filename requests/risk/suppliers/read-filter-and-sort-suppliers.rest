@@ -1,0 +1,17 @@
+### Listar proveedores mostrando campos principales
+GET http://localhost:4004/odata/v4/risk/Suppliers?$select=name,country,riskLevel
+
+### Filtrar proveedores con riesgo alto
+GET http://localhost:4004/odata/v4/risk/Suppliers?$filter=riskLevel eq 'HIGH'
+
+### Filtrar proveedores con puntaje de riesgo mayor a 50
+GET http://localhost:4004/odata/v4/risk/Suppliers?$filter=riskScore gt 50
+
+### Ordenar proveedores por puntaje de riesgo descendente
+GET http://localhost:4004/odata/v4/risk/Suppliers?$orderby=riskScore desc
+
+### Filtrar proveedores de la categoria Raw Materials
+GET http://localhost:4004/odata/v4/risk/Suppliers?$filter=category/name eq 'Raw Materials'
+
+### Filtrar proveedores de la categoria Logistics
+GET http://localhost:4004/odata/v4/risk/Suppliers?$filter=category/name eq 'Logistics'

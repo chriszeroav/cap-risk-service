@@ -1,0 +1,2 @@
+### Obtener resumen agregado de riesgos
+GET http://localhost:4004/odata/v4/risk/getRiskSummary()

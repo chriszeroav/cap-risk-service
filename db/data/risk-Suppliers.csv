@@ -1,0 +1,6 @@
+ID,name,country,taxId,email,phone,status,riskScore,riskLevel,category_ID
+11111111-1111-1111-1111-111111111111,Andes Logistics SAC,Peru,20123456789,contacto@andeslogistics.pe,+51 999 111 222,ACTIVE,25,LOW,aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa
+22222222-2222-2222-2222-222222222222,Pacific Mining Services,Chile,CL99887766,ops@pacificmining.cl,+56 988 222 333,ACTIVE,68,MEDIUM,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
+33333333-3333-3333-3333-333333333333,Global Raw Materials Ltd,USA,US44556677,risk@globalraw.com,+1 555 222 9999,BLOCKED,91,HIGH,bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb
+44444444-4444-4444-4444-444444444444,Amazonia Packaging SAC,Peru,20999888777,contact@amazoniapackaging.pe,+51 999 888 777,ACTIVE,42,LOW,dddddddd-dddd-dddd-dddd-dddddddddddd
+55555555-5555-5555-5555-555555555555,Lima Cloud Solutions,Peru,20444555666,sales@limacloud.pe,+51 955 444 333,ACTIVE,35,LOW,cccccccc-cccc-cccc-cccc-cccccccccccc

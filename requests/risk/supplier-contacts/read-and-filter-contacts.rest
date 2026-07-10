@@ -1,0 +1,11 @@
+### Listar todos los contactos de proveedores
+GET http://localhost:4004/odata/v4/risk/SupplierContacts
+
+### Listar contactos mostrando solo campos basicos
+GET http://localhost:4004/odata/v4/risk/SupplierContacts?$select=firstName,lastName,role
+
+### Listar solo contactos principales
+GET http://localhost:4004/odata/v4/risk/SupplierContacts?$filter=isPrimary eq true
+
+### Listar contactos principales con datos de contacto y proveedor
+GET http://localhost:4004/odata/v4/risk/SupplierContacts?$filter=isPrimary eq true&$select=firstName,lastName,email,supplier_ID

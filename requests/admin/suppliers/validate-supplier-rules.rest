@@ -1,0 +1,65 @@
+### Validar rechazo de PATCH con riskLevel invalido
+PATCH http://localhost:4004/odata/v4/admin/Suppliers(11d53c05-06f5-41ff-85ef-3f6227686c8a)
+Content-Type: application/json
+
+{
+  "riskLevel": "CRITICAL"
+}
+
+### Validar rechazo de deep insert con role invalido
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Invalid Contact Role Supplier",
+  "country": "Peru",
+  "taxId": "20777999000",
+  "email": "invalid.role@example.com",
+  "phone": "+51 900 999 000",
+  "status": "ACTIVE",
+  "riskScore": 40,
+  "riskLevel": "LOW",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Invalid",
+      "lastName": "Role",
+      "role": "LEGAL_CONTACT",
+      "email": "legal@example.com",
+      "phone": "+51 900 999 001",
+      "isPrimary": true
+    }
+  ]
+}
+
+### Validar rechazo de deep insert con riskLevel invalido
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Invalid Risk Level Deep Supplier",
+  "country": "Peru",
+  "taxId": "20777000111",
+  "email": "invalid.risk@example.com",
+  "phone": "+51 900 111 000",
+  "status": "ACTIVE",
+  "riskScore": 99,
+  "riskLevel": "CRITICAL",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Valid",
+      "lastName": "Contact",
+      "role": "ACCOUNT_EXECUTIVE",
+      "email": "valid.contact@example.com",
+      "phone": "+51 900 111 001",
+      "isPrimary": true
+    }
+  ]
+}
+
+### Verificar que no se creo proveedor con role invalido
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Invalid Contact Role Supplier'
+
+### Verificar que no se creo proveedor con riskLevel invalido
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Invalid Risk Level Deep Supplier'
