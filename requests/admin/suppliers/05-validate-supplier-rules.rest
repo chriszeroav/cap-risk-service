@@ -1,12 +1,12 @@
-### Validar rechazo de PATCH con riskLevel invalido
-PATCH http://localhost:4004/odata/v4/admin/Suppliers(11d53c05-06f5-41ff-85ef-3f6227686c8a)
+### Admin - validar rechazo de PATCH con riskLevel invalido
+PATCH http://localhost:4004/odata/v4/admin/Suppliers(22222222-2222-2222-2222-222222222222)
 Content-Type: application/json
 
 {
   "riskLevel": "CRITICAL"
 }
 
-### Validar rechazo de deep insert con role invalido
+### Admin - validar rechazo de deep insert con role invalido
 POST http://localhost:4004/odata/v4/admin/Suppliers
 Content-Type: application/json
 
@@ -32,7 +32,7 @@ Content-Type: application/json
   ]
 }
 
-### Validar rechazo de deep insert con riskLevel invalido
+### Admin - validar rechazo de deep insert con riskLevel invalido
 POST http://localhost:4004/odata/v4/admin/Suppliers
 Content-Type: application/json
 
@@ -58,8 +58,8 @@ Content-Type: application/json
   ]
 }
 
-### Verificar que no se creo proveedor con role invalido
+### Admin - verificar que no se creo proveedor con role invalido
 GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Invalid Contact Role Supplier'
 
-### Verificar que no se creo proveedor con riskLevel invalido
+### Admin - verificar que no se creo proveedor con riskLevel invalido
 GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Invalid Risk Level Deep Supplier'

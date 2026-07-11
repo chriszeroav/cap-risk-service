@@ -1,0 +1,8 @@
+### Risk - listar snapshot de proveedores sin datos sensibles
+GET http://localhost:4004/odata/v4/risk/SupplierRiskSnapshot
+
+### Risk - leer snapshot de proveedor por ID
+GET http://localhost:4004/odata/v4/risk/SupplierRiskSnapshot(11111111-1111-1111-1111-111111111111)
+
+### Risk - filtrar snapshot por proveedor activo de Peru
+GET http://localhost:4004/odata/v4/risk/SupplierRiskSnapshot?$filter=country eq 'Peru' and status eq 'ACTIVE'

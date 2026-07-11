@@ -1,0 +1,2 @@
+### Admin - obtener metadata del servicio
+GET http://localhost:4004/odata/v4/admin/$metadata

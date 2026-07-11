@@ -1,2 +1,0 @@
-### Listar categorias de proveedores
-GET http://localhost:4004/odata/v4/risk/SupplierCategories

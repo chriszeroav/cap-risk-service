@@ -1,0 +1,14 @@
+### Admin - listar todos los contactos
+GET http://localhost:4004/odata/v4/admin/SupplierContacts
+
+### Admin - listar contactos con campos principales
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$select=ID,firstName,lastName,role,email,isPrimary,supplier_ID
+
+### Admin - listar contactos de Andes Logistics SAC
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$filter=supplier_ID eq 11111111-1111-1111-1111-111111111111
+
+### Admin - leer contacto Maria Torres por ID
+GET http://localhost:4004/odata/v4/admin/SupplierContacts(c1111111-1111-1111-1111-111111111111)
+
+### Admin - buscar contacto creado por email
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$filter=email eq 'renato.quispe@andeslogistics.pe'

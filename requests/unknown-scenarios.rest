@@ -1,0 +1,116 @@
+### Admin - crear proveedor valido con reglas de negocio
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Inti Solar Components",
+  "country": "Peru",
+  "taxId": "20999222111",
+  "email": "operations@intisolar.pe",
+  "phone": "+51 933 222 111",
+  "status": "ACTIVE",
+  "riskScore": 85,
+  "riskLevel": "HIGH",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Mariana",
+      "lastName": "Loayza",
+      "role": "OPERATIONS_MANAGER",
+      "email": "mariana.loayza@intisolar.pe",
+      "phone": "+51 933 222 001",
+      "isPrimary": true
+    },
+    {
+      "firstName": "Esteban",
+      "lastName": "Ponce",
+      "role": "RISK_OFFICER",
+      "email": "esteban.ponce@intisolar.pe",
+      "phone": "+51 933 222 002",
+      "isPrimary": false
+    }
+  ]
+}
+
+### Admin - buscar Inti Solar Components
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Inti Solar Components'&$expand=contacts
+
+### Admin - crear proveedor invalido riskScore > 100
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Invalid Score Supplier",
+  "country": "Peru",
+  "taxId": "20999000111",
+  "email": "valid.score@example.com",
+  "phone": "+51 900 111 000",
+  "status": "ACTIVE",
+  "riskScore": 120,
+  "riskLevel": "HIGH",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc"
+}
+
+### Admin - crear Killa Water Analytics
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Killa Water Analytics",
+  "country": "Peru",
+  "taxId": "20999333111",
+  "email": "ops@killawater.pe",
+  "phone": "+51 922 333 111",
+  "status": "ACTIVE",
+  "riskScore": 72,
+  "riskLevel": "MEDIUM",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Valeria",
+      "lastName": "Mendoza",
+      "role": "OPERATIONS_MANAGER",
+      "email": "valeria.mendoza@killawater.pe",
+      "phone": "+51 922 333 001",
+      "isPrimary": true
+    },
+    {
+      "firstName": "Hugo",
+      "lastName": "Salinas",
+      "role": "RISK_OFFICER",
+      "email": "hugo.salinas@killawater.pe",
+      "phone": "+51 922 333 002",
+      "isPrimary": false
+    }
+  ]
+}
+
+### Admin - buscar Killa Water Analytics
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Killa Water Analytics'&$expand=contacts
+
+### Admin - PATCH parcial invalido solo riskScore
+PATCH http://localhost:4004/odata/v4/admin/Suppliers(dc415826-de4f-4c1b-86f2-bb9551d7e5a3)
+Content-Type: application/json
+
+{
+  "riskScore": 90
+}
+
+### Admin - verificar que PATCH parcial invalido no se aplico
+GET http://localhost:4004/odata/v4/admin/Suppliers(dc415826-de4f-4c1b-86f2-bb9551d7e5a3)?$select=ID,name,status,riskScore,riskLevel
+
+### Admin - PATCH parcial valido solo riskScore
+PATCH http://localhost:4004/odata/v4/admin/Suppliers(dc415826-de4f-4c1b-86f2-bb9551d7e5a3)
+Content-Type: application/json
+
+{
+  "riskScore": 75
+}
+
+### Admin - PATCH parcial invalido solo riskLevel
+PATCH http://localhost:4004/odata/v4/admin/Suppliers(dc415826-de4f-4c1b-86f2-bb9551d7e5a3)
+Content-Type: application/json
+
+{
+  "riskLevel": "HIGH"
+}

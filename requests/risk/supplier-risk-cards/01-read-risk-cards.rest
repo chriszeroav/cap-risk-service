@@ -1,0 +1,8 @@
+### Risk - listar tarjetas de riesgo
+GET http://localhost:4004/odata/v4/risk/SupplierRiskCards
+
+### Risk - listar tarjetas de riesgo ordenadas por puntaje
+GET http://localhost:4004/odata/v4/risk/SupplierRiskCards?$orderby=riskScore desc
+
+### Risk - listar tarjetas de riesgo con campos principales
+GET http://localhost:4004/odata/v4/risk/SupplierRiskCards?$select=supplierName,country,riskScore,riskLevel,categoryName

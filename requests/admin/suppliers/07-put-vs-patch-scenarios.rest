@@ -1,0 +1,97 @@
+@qhapaqSupplierId = paste-qhapaq-supplier-id-here
+
+### Admin - crear proveedor para comparar PUT y PATCH
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Qhapaq Energy Maintenance",
+  "country": "Peru",
+  "taxId": "20999111888",
+  "email": "operations@qhapaqenergy.pe",
+  "phone": "+51 944 222 333",
+  "status": "ACTIVE",
+  "riskScore": 44,
+  "riskLevel": "LOW",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Camila",
+      "lastName": "Rivas",
+      "role": "OPERATIONS_MANAGER",
+      "email": "camila.rivas@qhapaqenergy.pe",
+      "phone": "+51 944 222 001",
+      "isPrimary": true
+    },
+    {
+      "firstName": "Bruno",
+      "lastName": "Llanos",
+      "role": "RISK_OFFICER",
+      "email": "bruno.llanos@qhapaqenergy.pe",
+      "phone": "+51 944 222 002",
+      "isPrimary": false
+    }
+  ]
+}
+
+### Admin - buscar Qhapaq con contactos
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Qhapaq Energy Maintenance'&$expand=contacts
+
+### Admin - PATCH parcial Qhapaq
+PATCH http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})
+Content-Type: application/json
+
+{
+  "riskScore": 63,
+  "riskLevel": "MEDIUM"
+}
+
+### Admin - verificar PATCH parcial
+GET http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})?$select=ID,name,country,taxId,email,phone,status,riskScore,riskLevel,category_ID&$expand=category,contacts
+
+### Admin - PUT incompleto Qhapaq
+PUT http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})
+Content-Type: application/json
+
+{
+  "name": "Qhapaq Energy Maintenance Updated",
+  "country": "Peru",
+  "riskScore": 82,
+  "riskLevel": "HIGH"
+}
+
+### Admin - verificar efecto de PUT incompleto
+GET http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})?$select=ID,name,country,taxId,email,phone,status,riskScore,riskLevel&$expand=contacts
+
+### Admin - PUT completo cambiando categoria
+PUT http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})
+Content-Type: application/json
+
+{
+  "name": "Qhapaq Energy Maintenance",
+  "country": "Peru",
+  "taxId": "20999111888",
+  "email": "operations@qhapaqenergy.pe",
+  "phone": "+51 944 222 333",
+  "status": "ACTIVE",
+  "riskScore": 63,
+  "riskLevel": "MEDIUM",
+  "category_ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+}
+
+### Admin - verificar categoria cambiada por PUT
+GET http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})?$select=ID,name,category_ID&$expand=category
+
+### Admin - PATCH restaurar categoria original
+PATCH http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})
+Content-Type: application/json
+
+{
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc"
+}
+
+### Admin - verificar categoria restaurada por PATCH
+GET http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})?$select=ID,name,category_ID,email,phone,taxId&$expand=category
+
+### Admin - limpiar proveedor Qhapaq
+DELETE http://localhost:4004/odata/v4/admin/Suppliers({{qhapaqSupplierId}})

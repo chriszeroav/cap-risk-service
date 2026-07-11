@@ -1,2 +1,2 @@
-### Obtener metadata del servicio Risk
+### Risk - obtener metadata del servicio
 GET http://localhost:4004/odata/v4/risk/$metadata

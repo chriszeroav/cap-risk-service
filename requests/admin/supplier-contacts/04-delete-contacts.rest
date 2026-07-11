@@ -1,0 +1,4 @@
+@contactId = paste-contact-id-here
+
+### Admin - eliminar contacto creado manualmente
+DELETE http://localhost:4004/odata/v4/admin/SupplierContacts({{contactId}})

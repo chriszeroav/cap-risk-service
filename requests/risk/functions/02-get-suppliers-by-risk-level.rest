@@ -1,0 +1,11 @@
+### Risk - obtener proveedores con riesgo alto
+GET http://localhost:4004/odata/v4/risk/getSuppliersByRiskLevel(riskLevel='HIGH')
+
+### Risk - obtener proveedores con riesgo medio
+GET http://localhost:4004/odata/v4/risk/getSuppliersByRiskLevel(riskLevel='MEDIUM')
+
+### Risk - obtener proveedores con riesgo bajo
+GET http://localhost:4004/odata/v4/risk/getSuppliersByRiskLevel(riskLevel='LOW')
+
+### Risk - validar consulta con nivel de riesgo no permitido
+GET http://localhost:4004/odata/v4/risk/getSuppliersByRiskLevel(riskLevel='CRITICAL')

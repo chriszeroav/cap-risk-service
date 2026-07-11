@@ -1,0 +1,8 @@
+### Admin - listar categorias
+GET http://localhost:4004/odata/v4/admin/SupplierCategories
+
+### Admin - leer categoria Logistics
+GET http://localhost:4004/odata/v4/admin/SupplierCategories(aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa)
+
+### Admin - listar categorias con descripcion
+GET http://localhost:4004/odata/v4/admin/SupplierCategories?$select=ID,name,description

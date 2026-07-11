@@ -1,0 +1,16 @@
+### Admin - actualizar contacto Maria Torres
+PATCH http://localhost:4004/odata/v4/admin/SupplierContacts(c1111111-1111-1111-1111-111111111111)
+Content-Type: application/json
+
+{
+  "phone": "+51 999 111 888",
+  "role": "PROCUREMENT_MANAGER"
+}
+
+### Admin - validar rechazo de role invalido en contacto
+PATCH http://localhost:4004/odata/v4/admin/SupplierContacts(c1111111-1111-1111-1111-111111111111)
+Content-Type: application/json
+
+{
+  "role": "LEGAL_CONTACT"
+}

@@ -1,0 +1,23 @@
+### Admin - listar todos los proveedores
+GET http://localhost:4004/odata/v4/admin/Suppliers
+
+### Admin - listar proveedores con campos principales
+GET http://localhost:4004/odata/v4/admin/Suppliers?$select=ID,name,country,status,riskScore,riskLevel
+
+### Admin - leer proveedor por ID
+GET http://localhost:4004/odata/v4/admin/Suppliers(11111111-1111-1111-1111-111111111111)
+
+### Admin - leer proveedor con categoria y contactos
+GET http://localhost:4004/odata/v4/admin/Suppliers(11111111-1111-1111-1111-111111111111)?$expand=category,contacts
+
+### Admin - buscar proveedor semilla por nombre
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Andes Logistics SAC'
+
+### Admin - buscar proveedor creado por nombre
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Cordillera Safety Supplies'
+
+### Admin - buscar proveedor creado por deep insert
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Inka Industrial Services'
+
+### Admin - verificar proveedor actualizado
+GET http://localhost:4004/odata/v4/admin/Suppliers(22222222-2222-2222-2222-222222222222)?$select=ID,name,status,riskScore,riskLevel

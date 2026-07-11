@@ -1,0 +1,4 @@
+@supplierId = paste-supplier-id-here
+
+### Admin - eliminar proveedor creado manualmente
+DELETE http://localhost:4004/odata/v4/admin/Suppliers({{supplierId}})

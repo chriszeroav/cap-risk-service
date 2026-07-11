@@ -1,8 +1,0 @@
-### Listar proveedores de alto riesgo
-GET http://localhost:4004/odata/v4/risk/HighRiskSuppliers
-
-### Listar proveedores bloqueados
-GET http://localhost:4004/odata/v4/risk/BlockedSuppliers
-
-### Listar proveedores de Peru
-GET http://localhost:4004/odata/v4/risk/PeruSuppliers

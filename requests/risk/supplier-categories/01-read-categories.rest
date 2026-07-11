@@ -1,0 +1,5 @@
+### Risk - listar categorias de proveedores
+GET http://localhost:4004/odata/v4/risk/SupplierCategories
+
+### Risk - leer categoria Raw Materials
+GET http://localhost:4004/odata/v4/risk/SupplierCategories(bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb)

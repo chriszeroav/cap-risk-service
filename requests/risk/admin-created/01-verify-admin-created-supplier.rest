@@ -1,8 +1,8 @@
-### Verificar proveedor creado por deep insert en SupplierRisks
+### Risk - verificar proveedor creado por deep insert en SupplierRisks
 GET http://localhost:4004/odata/v4/risk/SupplierRisks?$filter=supplierName eq 'Inka Industrial Services'
 
-### Verificar proveedor creado por deep insert en PeruSuppliers
+### Risk - verificar proveedor creado por deep insert en PeruSuppliers
 GET http://localhost:4004/odata/v4/risk/PeruSuppliers?$filter=supplierName eq 'Inka Industrial Services'
 
-### Verificar que proveedor de riesgo medio no aparece en HighRiskSuppliers
+### Risk - verificar que proveedor de riesgo medio no aparece en HighRiskSuppliers
 GET http://localhost:4004/odata/v4/risk/HighRiskSuppliers?$filter=supplierName eq 'Inka Industrial Services'

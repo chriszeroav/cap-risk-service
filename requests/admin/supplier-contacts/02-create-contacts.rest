@@ -1,0 +1,13 @@
+### Admin - crear contacto para proveedor Andes Logistics SAC
+POST http://localhost:4004/odata/v4/admin/SupplierContacts
+Content-Type: application/json
+
+{
+  "supplier_ID": "11111111-1111-1111-1111-111111111111",
+  "firstName": "Renato",
+  "lastName": "Quispe",
+  "role": "FINANCE_CONTACT",
+  "email": "renato.quispe@andeslogistics.pe",
+  "phone": "+51 999 111 004",
+  "isPrimary": false
+}

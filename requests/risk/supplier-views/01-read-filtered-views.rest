@@ -1,0 +1,14 @@
+### Risk - listar proveedores de alto riesgo
+GET http://localhost:4004/odata/v4/risk/HighRiskSuppliers
+
+### Risk - listar proveedores bloqueados
+GET http://localhost:4004/odata/v4/risk/BlockedSuppliers
+
+### Risk - listar proveedores de Peru
+GET http://localhost:4004/odata/v4/risk/PeruSuppliers
+
+### Risk - listar directorio publico
+GET http://localhost:4004/odata/v4/risk/PublicSupplierDirectory
+
+### Risk - filtrar directorio publico por pais
+GET http://localhost:4004/odata/v4/risk/PublicSupplierDirectory?$filter=country eq 'Peru'

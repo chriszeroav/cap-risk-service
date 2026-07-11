@@ -1,29 +1,5 @@
 using {risk as db} from '../db/schema';
-
-type RiskSummary {
-    totalSuppliers   : Integer;
-    lowRiskCount     : Integer;
-    mediumRiskCount  : Integer;
-    highRiskCount    : Integer;
-    blockedCount     : Integer;
-    averageRiskScore : Decimal(9, 2);
-}
-
-type SupplierRiskResult {
-    ID           : UUID;
-    supplierName : String(120);
-    country      : String(60);
-    status       : String(20);
-    riskScore    : Integer;
-    riskLevel    : String(20);
-    categoryName : String(80);
-}
-
-service AdminService {
-    entity Suppliers          as projection on db.Suppliers;
-    entity SupplierCategories as projection on db.SupplierCategories;
-    entity SupplierContacts   as projection on db.SupplierContacts;
-}
+using {RiskSummary, SupplierRiskResult} from './common/risk-types';
 
 service RiskService {
     @readonly
@@ -112,7 +88,6 @@ service RiskService {
             ID,
             name
         };
-
 
     @readonly
     entity SupplierRiskCards       as

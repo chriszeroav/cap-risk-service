@@ -1,0 +1,104 @@
+@apuSupplierId = paste-apu-supplier-id-here
+@mistiSupplierId = paste-misti-supplier-id-here
+@nicolasContactId = paste-nicolas-contact-id-here
+
+### Admin - crear proveedor para prueba de borrado en cascada
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Apu Andean Equipment",
+  "country": "Peru",
+  "taxId": "20888111222",
+  "email": "contacto@apuandean.pe",
+  "phone": "+51 966 111 222",
+  "status": "ACTIVE",
+  "riskScore": 48,
+  "riskLevel": "LOW",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Elena",
+      "lastName": "Huaman",
+      "role": "OPERATIONS_MANAGER",
+      "email": "elena.huaman@apuandean.pe",
+      "phone": "+51 966 111 001",
+      "isPrimary": true
+    },
+    {
+      "firstName": "Rodrigo",
+      "lastName": "Caceres",
+      "role": "FINANCE_CONTACT",
+      "email": "rodrigo.caceres@apuandean.pe",
+      "phone": "+51 966 111 002",
+      "isPrimary": false
+    }
+  ]
+}
+
+### Admin - buscar proveedor Apu con contactos
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Apu Andean Equipment'&$expand=contacts
+
+### Admin - listar contactos de Apu por supplier_ID
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$filter=supplier_ID eq {{apuSupplierId}}
+
+### Admin - eliminar proveedor Apu
+DELETE http://localhost:4004/odata/v4/admin/Suppliers({{apuSupplierId}})
+
+### Admin - verificar que Apu ya no existe
+GET http://localhost:4004/odata/v4/admin/Suppliers({{apuSupplierId}})
+
+### Admin - verificar contacto Elena despues del delete
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$filter=email eq 'elena.huaman@apuandean.pe'
+
+### Admin - verificar contacto Rodrigo despues del delete
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$filter=email eq 'rodrigo.caceres@apuandean.pe'
+
+### Admin - crear proveedor para borrar un contacto individual
+POST http://localhost:4004/odata/v4/admin/Suppliers
+Content-Type: application/json
+
+{
+  "name": "Misti Control Systems",
+  "country": "Peru",
+  "taxId": "20888999000",
+  "email": "hello@misticontrol.pe",
+  "phone": "+51 955 333 444",
+  "status": "ACTIVE",
+  "riskScore": 58,
+  "riskLevel": "MEDIUM",
+  "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "contacts": [
+    {
+      "firstName": "Paula",
+      "lastName": "Benavides",
+      "role": "SALES_REPRESENTATIVE",
+      "email": "paula.benavides@misticontrol.pe",
+      "phone": "+51 955 333 001",
+      "isPrimary": true
+    },
+    {
+      "firstName": "Nicolas",
+      "lastName": "Arce",
+      "role": "RISK_OFFICER",
+      "email": "nicolas.arce@misticontrol.pe",
+      "phone": "+51 955 333 002",
+      "isPrimary": false
+    }
+  ]
+}
+
+### Admin - buscar proveedor Misti con contactos
+GET http://localhost:4004/odata/v4/admin/Suppliers?$filter=name eq 'Misti Control Systems'&$expand=contacts
+
+### Admin - eliminar contacto Nicolas
+DELETE http://localhost:4004/odata/v4/admin/SupplierContacts({{nicolasContactId}})
+
+### Admin - verificar que Paula permanece
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$filter=email eq 'paula.benavides@misticontrol.pe'
+
+### Admin - verificar que Nicolas fue eliminado
+GET http://localhost:4004/odata/v4/admin/SupplierContacts?$filter=email eq 'nicolas.arce@misticontrol.pe'
+
+### Admin - limpiar proveedor Misti
+DELETE http://localhost:4004/odata/v4/admin/Suppliers({{mistiSupplierId}})

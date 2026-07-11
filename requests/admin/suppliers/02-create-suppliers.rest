@@ -1,4 +1,4 @@
-### Crear proveedor simple desde Admin
+### Admin - crear proveedor simple
 POST http://localhost:4004/odata/v4/admin/Suppliers
 Content-Type: application/json
 
@@ -11,10 +11,10 @@ Content-Type: application/json
   "status": "ACTIVE",
   "riskScore": 30,
   "riskLevel": "LOW",
-  "category_ID": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb"
+  "category_ID": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
 }
 
-### Crear proveedor con contactos usando deep insert
+### Admin - crear proveedor con contactos usando deep insert
 POST http://localhost:4004/odata/v4/admin/Suppliers
 Content-Type: application/json
 
@@ -30,7 +30,7 @@ Content-Type: application/json
   "category_ID": "cccccccc-cccc-cccc-cccc-cccccccccccc",
   "contacts": [
     {
-      "firstName": "Lucía",
+      "firstName": "Lucia",
       "lastName": "Paredes",
       "role": "OPERATIONS_MANAGER",
       "email": "lucia.paredes@inkaindustrial.pe",
